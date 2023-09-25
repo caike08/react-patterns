@@ -1,8 +1,11 @@
 import { FC } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
+import { cn } from '../../utils/tw-merge'
 import { BONUSES_PAGES, HOOKS_PAGES, PATTERN_PAGES } from '../../constants/pages.const'
 import type { PageTypeList } from '../../types/pages.types'
+
+import css from './Layout.module.scss'
 
 // Page template layout with react-router-dom 
 const Layout: FC = () => {
@@ -19,25 +22,27 @@ const Layout: FC = () => {
   const currentYear = new Date().getFullYear()
   
   return (
-    <>
-      <header className='flex justify-center p-4'>
-        <h1 className='text-2xl font-bold text-center'>React Patterns</h1>
+    <div className={cn('overflow-hidden w-screen h-screen', css.layout)}>
+      <header className={cn('flex justify-center p-4 border-b shadow', css.header)}>
+        <h1 className='text-2xl font-bold text-center text-gray-700'>React Patterns</h1>
       </header>
-      <nav className='p-4 w-1/4'>
-        <h3 className='text-lg font-bold'>React Patterns</h3>
-        {orderedPageList(PATTERN_PAGES)}
-        <h3 className='text-lg font-bold'>Bonuses</h3>
-        {orderedPageList(BONUSES_PAGES)}
-        <h3 className='text-lg font-bold'>React Hooks</h3>
-        {orderedPageList(HOOKS_PAGES)}
-      </nav>
-      <section className='p-4 flex flex-col justify-center items-center w-full'>
+      <aside className={cn('p-4 overflow-y-scroll bg-gray-100', css.aside)}>
+        <nav>
+          <h3 className='text-lg font-bold'>React Patterns</h3>
+          {orderedPageList(PATTERN_PAGES)}
+          <h3 className='text-lg font-bold'>Bonuses</h3>
+          {orderedPageList(BONUSES_PAGES)}
+          <h3 className='text-lg font-bold'>React Hooks</h3>
+          {orderedPageList(HOOKS_PAGES)}
+        </nav>
+      </aside>
+      <main className={cn('p-4 flex flex-col justify-center items-center', css.main)}>
         <Outlet />
-      </section>
-      <footer className='p-4 flex justify-center items-center w-full'>
+      </main>
+      <footer className={cn('p-4 flex justify-center items-center border-t shadow text-gray-500', css.footer)}>
         <small>© {currentYear} caike08</small>
       </footer>
-    </>
+    </div>
   )
 }
 

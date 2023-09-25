@@ -3,7 +3,7 @@ import type { PageTypeList } from '../types/pages.types'
 export const PATTERN_PAGES: PageTypeList = [
   {
     title: 'Default component',
-    path: '1-default',
+    path: '1-default-component',
   },
   {
     title: 'Compound component',

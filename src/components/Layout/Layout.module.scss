@@ -1,0 +1,30 @@
+.layout {
+  display: grid;
+  grid-template-areas:
+  'header header header'
+  'sidebar main main'
+  'footer footer footer';
+  grid-template-columns: 1fr 3fr;
+
+  @media  screen and (max-width: px) {
+    .layout {
+      grid-template-columns: 1fr 3fr;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+}
+
+.aside {
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}

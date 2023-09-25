@@ -9,11 +9,12 @@ import {
 import Layout from './components/Layout/Layout'
 
 // Pages
+import DefaultPage from './pages/Default/DefaultPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
-
+      <Route path='/1-default-component' element={<DefaultPage />} />
     </Route>
   )
 )
