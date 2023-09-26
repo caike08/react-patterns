@@ -11,7 +11,7 @@ export const PATTERN_PAGES: PageTypeList = [
   },
   {
     title: 'React context',
-    path: '3-context',
+    path: '3-context-component',
   },
   {
     title: 'Render Props',
