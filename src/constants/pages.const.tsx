@@ -7,7 +7,7 @@ export const PATTERN_PAGES: PageTypeList = [
   },
   {
     title: 'Compound component',
-    path: '2-compound',
+    path: '2-compound-component',
   },
   {
     title: 'React context',
