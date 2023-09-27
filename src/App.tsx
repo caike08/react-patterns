@@ -7,6 +7,7 @@ import {
 
 // Components
 import Layout from './components/Layout/Layout'
+import NotFound from './components/NotFound/NotFound'
 
 // Pages
 import DefaultPage from './pages/Default/DefaultPage'
@@ -15,7 +16,8 @@ import ContextPage from './pages/Context/ContextPage'
 import RenderProps from './pages/RenderProps/RenderPropsPage'
 import PropsCollection from './pages/PropsCollection/PropsCollectionPage'
 import PropsGetter from './pages/PropsGetter/PropsGetterPage'
-import NotFound from './components/NotFound/NotFound'
+import StateInitializers from './pages/StateInitializers/StateInitializersPage'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,7 @@ const router = createBrowserRouter(
       <Route path='/4-render-props' element={<RenderProps />} />
       <Route path='/5-props-collection' element={<PropsCollection />} />
       <Route path='/6-props-getter' element={<PropsGetter />} />
+      <Route path='/7-state-initializers' element={<StateInitializers />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
