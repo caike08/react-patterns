@@ -51,7 +51,9 @@ Tabs.Tab = ({ children, ...props}: TabProps) => {
 const ParentComponent = (props: any) => {
   return (
     <>
-      <p className='text-lg font-bold text-gray-700'>Click to select an item: </p>
+      <h1 className='text-xl font-bold text-gray-700 mb-4'>Compound.Component Pattern</h1>
+
+      <p className='text-md font-bold text-gray-700'>Click to select an item: </p>
     
       <Tabs {...props}>
         <Tabs.Tab>Item 1</Tabs.Tab>

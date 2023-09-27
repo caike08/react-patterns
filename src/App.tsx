@@ -14,6 +14,7 @@ import CompoundPage from './pages/Compound/CompoundPage'
 import ContextPage from './pages/Context/ContextPage'
 import RenderProps from './pages/RenderProps/RenderPropsPage'
 import PropsCollection from './pages/PropsCollection/PropsCollectionPage'
+import PropsGetter from './pages/PropsGetter/PropsGetterPage'
 import NotFound from './components/NotFound/NotFound'
 
 const router = createBrowserRouter(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path='/3-context-component' element={<ContextPage />} />
       <Route path='/4-render-props' element={<RenderProps />} />
       <Route path='/5-props-collection' element={<PropsCollection />} />
+      <Route path='/6-props-getter' element={<PropsGetter />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
