@@ -13,6 +13,7 @@ import DefaultPage from './pages/Default/DefaultPage'
 import CompoundPage from './pages/Compound/CompoundPage'
 import ContextPage from './pages/Context/ContextPage'
 import RenderProps from './pages/RenderProps/RenderPropsPage'
+import PropsCollection from './pages/PropsCollection/PropsCollectionPage'
 import NotFound from './components/NotFound/NotFound'
 
 const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path='/2-compound-component' element={<CompoundPage />} />
       <Route path='/3-context-component' element={<ContextPage />} />
       <Route path='/4-render-props' element={<RenderProps />} />
+      <Route path='/5-props-collection' element={<PropsCollection />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
