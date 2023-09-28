@@ -17,6 +17,7 @@ import RenderProps from './pages/RenderProps/RenderPropsPage'
 import PropsCollection from './pages/PropsCollection/PropsCollectionPage'
 import PropsGetter from './pages/PropsGetter/PropsGetterPage'
 import StateInitializers from './pages/StateInitializers/StateInitializersPage'
+import StateReducer from './pages/StateReducer/StateReducerPage'
 
 
 const router = createBrowserRouter(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path='/5-props-collection' element={<PropsCollection />} />
       <Route path='/6-props-getter' element={<PropsGetter />} />
       <Route path='/7-state-initializers' element={<StateInitializers />} />
+      <Route path='/8-state-reducers' element={<StateReducer />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
