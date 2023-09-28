@@ -34,8 +34,8 @@ export const PATTERN_PAGES: PageTypeList = [
     path: '8-state-reducers',
   },
   {
-    title: 'Control Props',
-    path: '9-control-props',
+    title: 'Controlled Props',
+    path: '9-controlled-props',
   },
   {
     title: 'Provider Pattern',
