@@ -19,6 +19,7 @@ import PropsGetter from './pages/PropsGetter/PropsGetterPage'
 import StateInitializers from './pages/StateInitializers/StateInitializersPage'
 import StateReducer from './pages/StateReducer/StateReducerPage'
 import ControlledProps from './pages/ControlledProps/ControlledPropsPage'
+import ProviderPage from './pages/Provider/ProviderPage'
 
 
 const router = createBrowserRouter(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path='/7-state-initializers' element={<StateInitializers />} />
       <Route path='/8-state-reducers' element={<StateReducer />} />
       <Route path='/9-controlled-props' element={<ControlledProps />} />
+      <Route path='/10-provider-pattern' element={<ProviderPage />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
