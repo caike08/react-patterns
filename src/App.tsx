@@ -27,6 +27,7 @@ import HighOrderComponentPage from './pages/HighOrderComponent/HighOrderComponen
 import ProxyComponentPage from './pages/ProxyComponent/ProxyComponentPage'
 import ControlledFormPage from './pages/ControlledForm/ControlledFormPage'
 import UncontrolledFormPage from './pages/UncontrolledForm/UncontrolledFormPage'
+import ComponentInjectionPage from './pages/ComponentInjection/ComponentInjectionPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +46,7 @@ const router = createBrowserRouter(
       <Route path={PATTERN_PAGES_URLS.PROXY_COMPONENT} element={<ProxyComponentPage />} />
       <Route path={PATTERN_PAGES_URLS.CONTROLLED_COMPONENTS} element={<ControlledFormPage />} />
       <Route path={PATTERN_PAGES_URLS.UNCONTROLLED_COMPONENTS} element={<UncontrolledFormPage />} />
+      <Route path={PATTERN_PAGES_URLS.COMPONENT_INJECTION} element={<ComponentInjectionPage />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
