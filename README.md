@@ -1,11 +1,18 @@
-# React + TypeScript + Vite
+# React Patterns - case studies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a few example of common React patterns, where I tried to simplify their usage. The goal was to understand when each pattern can be used to help me write better code.
 
-Currently, two official plugins are available:
+Inspired on:
+- @kentcdodds [advanced react patterns examples](https://github.com/kentcdodds/advanced-react-patterns-v2/tree/main)
+- @Vitaminvp [react patterns](https://github.com/Vitaminvp/react-patterns/tree/68bca6c7fe5c9c0c63d740ed2ae5b67dae315eef)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Proudly using:
+- React@18
+- Vite@4
+- Bun (to replace NodeJS)
+- Typescript
+- TailwindCSS
+- SASS preprocessor
 
 ## Expanding the ESLint configuration
 
