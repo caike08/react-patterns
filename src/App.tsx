@@ -25,6 +25,7 @@ import ControlledProps from './pages/ControlledProps/ControlledPropsPage'
 import ProviderPage from './pages/Provider/ProviderPage'
 import HighOrderComponentPage from './pages/HighOrderComponent/HighOrderComponentPage'
 import ProxyComponentPage from './pages/ProxyComponent/ProxyComponentPage'
+import ControlledFormPage from './pages/ControlledForm/ControlledFormPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path={PATTERN_PAGES_URLS.PROVIDER_PATTERN} element={<ProviderPage />} />
       <Route path={PATTERN_PAGES_URLS.HOC} element={<HighOrderComponentPage />} />
       <Route path={PATTERN_PAGES_URLS.PROXY_COMPONENT} element={<ProxyComponentPage />} />
+      <Route path={PATTERN_PAGES_URLS.CONTROLLED_COMPONENTS} element={<ControlledFormPage />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
