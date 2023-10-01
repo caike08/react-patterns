@@ -1,122 +1,146 @@
 import type { PageTypeList } from '../types/pages.types'
 
+export const enum PATTERN_PAGES_URLS {
+  // react patterns
+  DEFAULT_COMPONENT = '/1-default-component',
+  COMPOUND_COMPONENT = '/2-compound-component',
+  CONTEXT_COMPONENT = '/3-context-component',
+  RENDER_PROPS = '/4-render-props',
+  PROPS_COLLECTION = '/5-props-collection',
+  PROPS_GETTER = '/6-props-getter',
+  STATE_INITIALIZERS = '/7-state-initializers',
+  STATE_REDUCERS = '/8-state-reducers',
+  CONTROLLED_PROPS = '/9-controlled-props',
+  PROVIDER_PATTERN = '/10-provider-pattern',
+  HOC = '/11-hoc',
+  // bonus
+  PROXY_COMPONENT = '/21-proxy-component',
+  CONTROLLED_COMPONENTS = '/22-controlled-components',
+  UNCONTROLLED_COMPONENTS = '/23-uncontrolled-components',
+  COMPONENT_INJECTION = '/24-component-injection',
+  // hooks
+  FORWARD_REF_HOOK = '/26-forward-ref',
+  USE_IMPERATIVE_HANDLE_HOOK = '/27-use-imperative-handle',
+  USE_CALLBACK_HOOK = '/28-use-callback',
+  USE_DIMENSION_HOOK = '/29-use-dimension',
+  USE_INTERVAL_HOOK = '/30-use-interval',
+  USE_LAYOUT_EFFECT_HOOK = '/31-use-layout-effect',
+  USE_REDUCER_HOOK = '/32-use-reducer',
+  USE_MEMO_HOOK = '/33-use-memo',
+  USE_REF_HOOK = '/34-use-ref',
+  USE_STATE_HOOK = '/35-use-state',
+  USE_TRANSITION_HOOK = '/36-use-transition',
+}
+
 export const PATTERN_PAGES: PageTypeList = [
   {
     title: 'Default component',
-    path: '1-default-component',
+    path: PATTERN_PAGES_URLS.DEFAULT_COMPONENT,
   },
   {
     title: 'Compound component',
-    path: '2-compound-component',
+    path: PATTERN_PAGES_URLS.COMPOUND_COMPONENT,
   },
   {
     title: 'React context',
-    path: '3-context-component',
+    path: PATTERN_PAGES_URLS.CONTEXT_COMPONENT,
   },
   {
     title: 'Render Props',
-    path: '4-render-props',
+    path: PATTERN_PAGES_URLS.RENDER_PROPS,
   },
   {
     title: 'Props collection',
-    path: '5-props-collection',
+    path: PATTERN_PAGES_URLS.PROPS_COLLECTION,
   },
   {
     title: 'Prop Getters',
-    path: '6-props-getter',
+    path: PATTERN_PAGES_URLS.PROPS_GETTER,
   },
   {
     title: 'State Initializers',
-    path: '7-state-initializers',
+    path: PATTERN_PAGES_URLS.STATE_INITIALIZERS,
   },
   {
     title: 'State Reducers',
-    path: '8-state-reducers',
+    path: PATTERN_PAGES_URLS.STATE_REDUCERS,
   },
   {
     title: 'Controlled Props',
-    path: '9-controlled-props',
+    path: PATTERN_PAGES_URLS.CONTROLLED_PROPS,
   },
   {
     title: 'Provider Pattern',
-    path: '10-provider-pattern',
+    path: PATTERN_PAGES_URLS.PROVIDER_PATTERN,
   },
   {
     title: 'High Order Components',
-    path: '11-hoc',
+    path: PATTERN_PAGES_URLS.HOC,
   }
 ]
 
 export const BONUSES_PAGES: PageTypeList = [
   {
-    title: 'Reusable Styles',
-    path: '20-reusable-styles',
-  },
-  {
-    title: 'State Reducers (with change types)',
-    path: '21-state-reducer-with-types',
-  },
-  {
     title: 'Proxy Component',
-    path: '22-proxy-component',
+    path: PATTERN_PAGES_URLS.PROXY_COMPONENT,
   },
   {
     title: 'Controlled Components (submit form)',
-    path: '23-controlled-components',
+    path: PATTERN_PAGES_URLS.CONTROLLED_COMPONENTS,
   },
   {
     title: 'Uncontrolled Components (submit form)',
-    path: '24-uncontrolled-components',
+    path: PATTERN_PAGES_URLS.UNCONTROLLED_COMPONENTS,
   },
   {
     title: 'Component Injection',
-    path: '25-component-injection',
+    path: PATTERN_PAGES_URLS.COMPONENT_INJECTION,
   }
 ]
 
 export const HOOKS_PAGES: PageTypeList = [
   {
     title: 'React forwardRef hook',
-    path: '26-forward-ref',
+    path: PATTERN_PAGES_URLS.FORWARD_REF_HOOK,
   },
   {
     title: 'React useImperativeHandle hook',
-    path: '27-use-imperative-handle',
+    path: PATTERN_PAGES_URLS.USE_IMPERATIVE_HANDLE_HOOK,
   },
   {
     title: 'React useCallback hook',
-    path: '28-use-callback',
+    path: PATTERN_PAGES_URLS.USE_CALLBACK_HOOK,
   },
   {
     title: 'React useDimensions hook',
-    path: '29-use-dimensions',
+    path: PATTERN_PAGES_URLS.USE_DIMENSION_HOOK,
   },
   {
     title: 'React useInterval hook',
-    path: '30-use-interval',
+    path: PATTERN_PAGES_URLS.USE_INTERVAL_HOOK,
   },
   {
     title: 'React useLayoutEffect hook',
-    path: '31-use-layout-effect',
+    path: PATTERN_PAGES_URLS.USE_LAYOUT_EFFECT_HOOK,
   },
   {
     title: 'React useReducer hook',
-    path: '32-use-reducer',
+    path: PATTERN_PAGES_URLS.USE_REDUCER_HOOK,
   },
   {
     title: 'React useMemo hook',
-    path: '33-use-memo',
+    path: PATTERN_PAGES_URLS.USE_MEMO_HOOK,
   },
   {
     title: 'React useRef hook',
-    path: '34-use-ref',
+    path: PATTERN_PAGES_URLS.USE_REF_HOOK,
   },
   {
     title: 'React useState hook',
-    path: '35-use-state',
+    path: PATTERN_PAGES_URLS.USE_STATE_HOOK,
   },
   {
     title: 'React useTransition hook',
-    path: '36-use-transition',
+    path: PATTERN_PAGES_URLS.USE_TRANSITION_HOOK,
   },
 ]
