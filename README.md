@@ -5,6 +5,7 @@ This repository contains a few example of common React patterns, where I tried t
 Inspired on:
 - @kentcdodds [advanced react patterns examples](https://github.com/kentcdodds/advanced-react-patterns-v2/tree/main)
 - @Vitaminvp [react patterns](https://github.com/Vitaminvp/react-patterns/tree/68bca6c7fe5c9c0c63d740ed2ae5b67dae315eef)
+- [React Patterns](https://reactpatterns.js.org/docs/) 
 
 Proudly using:
 - React@18
