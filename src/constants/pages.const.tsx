@@ -27,7 +27,6 @@ export const enum PATTERN_PAGES_URLS {
   USE_LAYOUT_EFFECT_HOOK = '/31-use-layout-effect',
   USE_REDUCER_HOOK = '/32-use-reducer',
   USE_MEMO_HOOK = '/33-use-memo',
-  USE_REF_HOOK = '/34-use-ref',
   USE_STATE_HOOK = '/35-use-state',
   USE_TRANSITION_HOOK = '/36-use-transition',
 }
@@ -130,10 +129,6 @@ export const HOOKS_PAGES: PageTypeList = [
   {
     title: 'React useMemo hook',
     path: PATTERN_PAGES_URLS.USE_MEMO_HOOK,
-  },
-  {
-    title: 'React useRef hook',
-    path: PATTERN_PAGES_URLS.USE_REF_HOOK,
   },
   {
     title: 'React useState hook',
