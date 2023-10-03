@@ -14,16 +14,16 @@ export const enum PATTERN_PAGES_URLS {
   PROVIDER_PATTERN = '/10-provider-pattern',
   HOC = '/11-hoc',
   // bonus
-  PROXY_COMPONENT = '/21-proxy-component',
-  CONTROLLED_COMPONENTS = '/22-controlled-components',
-  UNCONTROLLED_COMPONENTS = '/23-uncontrolled-components',
-  COMPONENT_INJECTION = '/24-component-injection',
+  PROXY_COMPONENT = '/20-proxy-component',
+  CONTROLLED_COMPONENTS = '/21-controlled-components',
+  UNCONTROLLED_COMPONENTS = '/22-uncontrolled-components',
+  COMPONENT_INJECTION = '/23-component-injection',
   // hooks
-  FORWARD_REF_HOOK = '/26-forward-ref',
-  USE_IMPERATIVE_HANDLE_HOOK = '/27-use-imperative-handle',
-  USE_CALLBACK_HOOK = '/28-use-callback',
-  USE_REDUCER_HOOK = '/32-use-reducer',
-  USE_TRANSITION_HOOK = '/36-use-transition',
+  FORWARD_REF_HOOK = '/30-forward-ref',
+  USE_IMPERATIVE_HANDLE_HOOK = '/31-use-imperative-handle',
+  USE_CALLBACK_HOOK = '/32-use-callback',
+  USE_REDUCER_HOOK = '/33-use-reducer',
+  USE_TRANSITION_HOOK = '/34-use-transition',
 }
 
 export const PATTERN_PAGES: PageTypeList = [
