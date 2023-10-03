@@ -36,8 +36,10 @@ const Layout: FC = () => {
           {orderedPageList(HOOKS_PAGES)}
         </nav>
       </aside>
-      <main className={cn('p-4 flex flex-col justify-center items-center', css.main)}>
-        <Outlet />
+      <main className={cn('p-4 overflow-y-scroll', css.main)}>
+        <div className='flex flex-col justify-center items-center'>
+          <Outlet />
+        </div>
       </main>
       <footer className={cn('p-4 flex justify-center items-center border-t shadow text-gray-500', css.footer)}>
         <small>© {currentYear} caike08</small>

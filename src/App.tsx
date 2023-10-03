@@ -32,6 +32,7 @@ import ForwardRefHookPage from './pages/ForwardRefHook/ForwardRefHookPage'
 import UseImperativeHandlePage from './pages/UseImperativeHandleHook/UseImperativeHandleHookPage'
 import UseCallbackHookPage from './pages/UseCallbackHook/UseCallbackHookPage'
 import UseReducerHookPage from './pages/UseReducerHook/UseReducerHookPage'
+import UseTransitionHookPage from './pages/UseTransitionHook/UseTransitionHookPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,6 +56,7 @@ const router = createBrowserRouter(
       <Route path={PATTERN_PAGES_URLS.USE_IMPERATIVE_HANDLE_HOOK} element={<UseImperativeHandlePage />} />
       <Route path={PATTERN_PAGES_URLS.USE_CALLBACK_HOOK} element={<UseCallbackHookPage />} />
       <Route path={PATTERN_PAGES_URLS.USE_REDUCER_HOOK} element={<UseReducerHookPage />} />
+      <Route path={PATTERN_PAGES_URLS.USE_TRANSITION_HOOK} element={<UseTransitionHookPage />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
