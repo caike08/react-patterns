@@ -30,6 +30,7 @@ import UncontrolledFormPage from './pages/UncontrolledForm/UncontrolledFormPage'
 import ComponentInjectionPage from './pages/ComponentInjection/ComponentInjectionPage'
 import ForwardRefHookPage from './pages/ForwardRefHook/ForwardRefHookPage'
 import UseImperativeHandlePage from './pages/UseImperativeHandleHook/UseImperativeHandleHookPage'
+import UseCallbackHookPage from './pages/UseCallbackHook/UseCallbackHookPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
       <Route path={PATTERN_PAGES_URLS.COMPONENT_INJECTION} element={<ComponentInjectionPage />} />
       <Route path={PATTERN_PAGES_URLS.FORWARD_REF_HOOK} element={<ForwardRefHookPage />} />
       <Route path={PATTERN_PAGES_URLS.USE_IMPERATIVE_HANDLE_HOOK} element={<UseImperativeHandlePage />} />
+      <Route path={PATTERN_PAGES_URLS.USE_CALLBACK_HOOK} element={<UseCallbackHookPage />} />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
