@@ -22,12 +22,7 @@ export const enum PATTERN_PAGES_URLS {
   FORWARD_REF_HOOK = '/26-forward-ref',
   USE_IMPERATIVE_HANDLE_HOOK = '/27-use-imperative-handle',
   USE_CALLBACK_HOOK = '/28-use-callback',
-  USE_DIMENSION_HOOK = '/29-use-dimension',
-  USE_INTERVAL_HOOK = '/30-use-interval',
-  USE_LAYOUT_EFFECT_HOOK = '/31-use-layout-effect',
   USE_REDUCER_HOOK = '/32-use-reducer',
-  USE_MEMO_HOOK = '/33-use-memo',
-  USE_STATE_HOOK = '/35-use-state',
   USE_TRANSITION_HOOK = '/36-use-transition',
 }
 
@@ -111,28 +106,8 @@ export const HOOKS_PAGES: PageTypeList = [
     path: PATTERN_PAGES_URLS.USE_CALLBACK_HOOK,
   },
   {
-    title: 'React useDimensions hook',
-    path: PATTERN_PAGES_URLS.USE_DIMENSION_HOOK,
-  },
-  {
-    title: 'React useInterval hook',
-    path: PATTERN_PAGES_URLS.USE_INTERVAL_HOOK,
-  },
-  {
-    title: 'React useLayoutEffect hook',
-    path: PATTERN_PAGES_URLS.USE_LAYOUT_EFFECT_HOOK,
-  },
-  {
     title: 'React useReducer hook',
     path: PATTERN_PAGES_URLS.USE_REDUCER_HOOK,
-  },
-  {
-    title: 'React useMemo hook',
-    path: PATTERN_PAGES_URLS.USE_MEMO_HOOK,
-  },
-  {
-    title: 'React useState hook',
-    path: PATTERN_PAGES_URLS.USE_STATE_HOOK,
   },
   {
     title: 'React useTransition hook',
