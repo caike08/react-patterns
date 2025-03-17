@@ -1,5 +1,11 @@
-// render props pattern
-// Reference: https://flexiple.com/react/render-props-an-advanced-react-pattern
+/* render props pattern:
+ * The Render Props pattern is a React technique that allows components to share logic while giving consumers 
+ * the flexibility to define how the logic should be rendered. Instead of passing UI components as children, 
+ * a function is passed as the `children` prop, which receives data or behavior as arguments and returns JSX to render.
+ * This pattern enables better code reuse, as the same logic can be applied to different UI components.
+ * Reference: https://flexiple.com/react/render-props-an-advanced-react-pattern
+  * Reference 2: https://reactpatterns.com/
+  */
 import { ReactNode, useState } from 'react'
 
 import Switch from '../../components/Switch/Switch'
@@ -19,12 +25,11 @@ const Toggle = ({ children }: ToggleProps) => {
   })
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const RenderProps = (props: any) => {
+const ToggleComponent = () => {
   return (
     <>
       <h1 className='text-2xl font-bold text-gray-700 mb-4'>Render Props Pattern</h1>    
-      <Toggle {...props}>
+      <Toggle>
         {({ on, toggle }) => (
           <>
             <Switch on={on} onClick={toggle} />
@@ -35,4 +40,4 @@ const RenderProps = (props: any) => {
   )
 }
 
-export default RenderProps
+export default ToggleComponent

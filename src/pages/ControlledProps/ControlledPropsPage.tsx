@@ -1,30 +1,43 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// React controlled props pattern
-// https://dev.to/robogeek95/react-controlled-props-pattern-3ej1
-// https://kentcdodds.com/blog/control-props-vs-state-reducers
+ /* React controlled props pattern
+  *
+  * The Controlled Props pattern is a React technique that allows a component to work in both controlled and uncontrolled modes.
+  * In this pattern, the component first checks whether a state value (such as 'on') is provided as a prop. If so, the parent
+  * component controls the state and provides an onToggle callback to handle state updates. Otherwise, the component manages its
+  * own state internally using hooks like useState. This dual behavior offers flexibility: it can be externally controlled when needed,
+  * yet still function independently with sensible default behavior.
+  *
+  * https://dev.to/robogeek95/react-controlled-props-pattern-3ej1
+  * https://kentcdodds.com/blog/control-props-vs-state-reducers
+  */
 
-import { useState } from 'react'
-
+import { FC, useState } from 'react'
 import Switch from '../../components/Switch/Switch'
 
-const Toggle = (props: any) => {
-  const [ on, setOn ] = useState<boolean>(false)
+interface ToggleProps {
+  on?: boolean
+  onToggle?: (on: boolean) => void
+}
 
-  const checkIfControlled = (arg: any) => {
-    // if prop.on (which is the value of useState) is not undefined
-    return props[arg] !== undefined
+const Toggle: FC<ToggleProps> = (props) => {
+  const [internalOn, setInternalOn] = useState<boolean>(false)
+
+  // Check if the component is controlled (i.e. if the prop is provided)
+  const checkIfControlled = (key: keyof ToggleProps): boolean => {
+    return props[key] !== undefined
   }
 
+  // Get the current value: controlled from parent or internal state
   const getOn = () => {
-    // if props.on exists, component is controlled from outside. Otherwise, it is controlled via its internal useState
-    return checkIfControlled('on') ? props.on : on
+    return checkIfControlled('on') ? props.on! : internalOn
   }
 
+  // Toggle the state: delegate to onToggle if controlled, or update internal state otherwise
   const toggle = () => {
-    // if props.on exists, onToggle is called from parent component. Otherwise, setOn is called
-    return checkIfControlled('on')
-      ? props.onToggle(!getOn())
-      : setOn(!on)
+    if (checkIfControlled('on')) {
+      return props.onToggle?.(!getOn())
+    } else {
+      return setInternalOn(!internalOn)
+    }
   }
 
   return (
@@ -41,11 +54,11 @@ const Toggle = (props: any) => {
   )
 }
 
-const ControlledProps = (props: any) => {
-  const [ bothOn, setBothOn ] = useState<boolean>(false)
+const ControlledProps: FC = () => {
+  const [bothOn, setBothOn] = useState<boolean>(false)
 
   const handleToggle = (on: boolean) => {
-    // one toggle should affect the other, meaning that it is controlled from outside :)
+    // One toggle affects the other, meaning that the state is controlled from the parent.
     setBothOn(on)
   }
 
@@ -53,9 +66,9 @@ const ControlledProps = (props: any) => {
     <>
       <h1 className='text-2xl font-bold text-gray-700 mb-4'>Controlled Props Pattern</h1>
 
-      <Toggle on={bothOn} onToggle={handleToggle} {...props} />
+      <Toggle on={bothOn} onToggle={handleToggle} />
       <br />
-      <Toggle on={bothOn} onToggle={handleToggle} {...props} />
+      <Toggle on={bothOn} onToggle={handleToggle} />
     </>
   )
 }

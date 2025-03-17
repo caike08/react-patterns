@@ -1,7 +1,7 @@
 import {
-  Route,
   createBrowserRouter,
   createRoutesFromElements,
+  Route,
   RouterProvider
 } from 'react-router-dom'
 
@@ -13,24 +13,24 @@ import Layout from './components/Layout/Layout'
 import NotFound from './components/NotFound/NotFound'
 
 // Pages
-import DefaultPage from './pages/Default/DefaultPage'
+import ComponentInjectionPage from './pages/ComponentInjection/ComponentInjectionPage'
 import CompoundPage from './pages/Compound/CompoundPage'
 import ContextPage from './pages/Context/ContextPage'
-import RenderProps from './pages/RenderProps/RenderPropsPage'
+import ControlledFormPage from './pages/ControlledForm/ControlledFormPage'
+import ControlledProps from './pages/ControlledProps/ControlledPropsPage'
+import DefaultPage from './pages/Default/DefaultPage'
+import ForwardRefHookPage from './pages/ForwardRefHook/ForwardRefHookPage'
+import HighOrderComponentPage from './pages/HighOrderComponent/HighOrderComponentPage'
 import PropsCollection from './pages/PropsCollection/PropsCollectionPage'
 import PropsGetter from './pages/PropsGetter/PropsGetterPage'
+import ProviderPage from './pages/Provider/ProviderPage'
+import ProxyComponentPage from './pages/ProxyComponent/ProxyComponentPage'
+import RenderProps from './pages/RenderProps/RenderPropsPage'
 import StateInitializers from './pages/StateInitializers/StateInitializersPage'
 import StateReducer from './pages/StateReducer/StateReducerPage'
-import ControlledProps from './pages/ControlledProps/ControlledPropsPage'
-import ProviderPage from './pages/Provider/ProviderPage'
-import HighOrderComponentPage from './pages/HighOrderComponent/HighOrderComponentPage'
-import ProxyComponentPage from './pages/ProxyComponent/ProxyComponentPage'
-import ControlledFormPage from './pages/ControlledForm/ControlledFormPage'
 import UncontrolledFormPage from './pages/UncontrolledForm/UncontrolledFormPage'
-import ComponentInjectionPage from './pages/ComponentInjection/ComponentInjectionPage'
-import ForwardRefHookPage from './pages/ForwardRefHook/ForwardRefHookPage'
-import UseImperativeHandlePage from './pages/UseImperativeHandleHook/UseImperativeHandleHookPage'
 import UseCallbackHookPage from './pages/UseCallbackHook/UseCallbackHookPage'
+import UseImperativeHandlePage from './pages/UseImperativeHandleHook/UseImperativeHandleHookPage'
 import UseReducerHookPage from './pages/UseReducerHook/UseReducerHookPage'
 import UseTransitionHookPage from './pages/UseTransitionHook/UseTransitionHookPage'
 

@@ -1,52 +1,64 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // State Initializer Pattern
 // Reference: https://kentcdodds.com/blog/the-state-initializer-pattern
-import React, { ReactNode } from 'react'
+import React, { Component, ReactNode } from 'react'
 import Switch from '../../components/Switch/Switch'
 
-// runs all functions. First prop is the array of functions. Second prop are the arguments of those functions
-const callAllFunctions = (...fns: ((...args: any) => any)[]) => (...args: any[]) => {
+// A generic utility function that calls all provided functions with the given arguments.
+const callAllFunctions = <Args extends unknown[]>(
+  ...fns: Array<((...args: Args) => unknown) | undefined>
+) => (...args: Args) => {
   fns.forEach(fn => fn && fn(...args))
 }
 
-interface ToggleProps {
-  initialOn: boolean
+/**
+ * The shape of the helper object passed to children.
+ */
+type ToggleChildrenProps = {
   on: boolean
-  title: string
-  onReset: (args: boolean) => void
-  onToggle: (args: boolean) => void
-  children:
-    (props: {on: boolean, toggle: () => void, reset: () => void, getTogglerProps: (props: any) => any }) => ReactNode
+  toggle: () => void
+  reset: () => void
+  getTogglerProps: <T extends Record<string, unknown>>(
+    props: T & { onClick?: (...args: unknown[]) => unknown }
+  ) => T & { onClick: (...args: unknown[]) => void } & { 'aria-pressed': boolean }
 }
 
-// Now let's make this as a Class component instead of functional
-class Toggle extends React.Component<ToggleProps> {
-  // default values for these props
+/**
+ * The props for the Toggle component.
+ */
+interface ToggleProps {
+  initialOn: boolean
+  onToggle: (on: boolean) => void
+  onReset: (on: boolean) => void
+  children: (props: ToggleChildrenProps) => ReactNode
+}
+
+// Class component using the State Initializers pattern.
+class Toggle extends Component<ToggleProps, { on: boolean }> {
+  // Default props.
   static defaultProps = {
     initialOn: false,
     onReset: () => {},
   }
 
-  // initial state for initialOn
+  // Save the initial state based on the initialOn prop.
   initialState = {
     on: this.props.initialOn,
   }
 
-  // state 
+  // Component state.
   state = this.initialState
 
-  // here resets set initial state, plus calls a function that toggles the on prop to onReset
+  // Resets the state to the initial state and then calls the onReset callback.
   reset = () => {
-    this.setState(
-      this.initialState,
-      () => { this.props.onReset(this.state.on)}
-    )
+    this.setState(this.initialState, () => {
+      this.props.onReset(this.state.on)
+    })
   }
 
-  // toggles the on prop
+  // Toggles the state and then calls the onToggle callback.
   toggle = () => {
     this.setState(
-      ({ on }: ToggleProps) => ({ on: !on }),
+      ({ on }) => ({ on: !on }),
       () => this.props.onToggle(this.state.on)
     )
   }
@@ -55,15 +67,22 @@ class Toggle extends React.Component<ToggleProps> {
     console.log('state', this.state)
   }
 
-  // call all functions inside onClick & pass other props
-  getTogglerProps = ({ onClick, ...props }: any) => ({
-    onClick: callAllFunctions(onClick, this.toggle),
+  /**
+   * Merges additional props with the toggle functionality.
+   * It wraps any onClick provided in the props so that it first calls that function and then toggles.
+   */
+  getTogglerProps = <T extends Record<string, unknown>>(
+    props: T & { onClick?: (...args: unknown[]) => unknown }
+  ): T & { onClick: (...args: unknown[]) => void } & { 'aria-pressed': boolean } => ({
+    ...props,
+    onClick: callAllFunctions(props.onClick, this.toggle),
     'aria-pressed': this.state.on,
-    ...props
   })
 
-  // returns the state and helpers - getter pattern
-  getStateAndHelpers() {
+  /**
+   * Provides the current state and helper functions to the children.
+   */
+  getStateAndHelpers(): ToggleChildrenProps {
     return {
       on: this.state.on,
       toggle: this.toggle,
@@ -72,28 +91,25 @@ class Toggle extends React.Component<ToggleProps> {
     }
   }
 
-  // render children with getStateAndHelpers()
   render() {
     return this.props.children(this.getStateAndHelpers())
   }
 }
 
-const StateInitializers = (props: any) => {
+const StateInitializers: React.FC = () => {
   const initialOn = true
-  const onToggle = (...args: any) => console.log('on toggle', ...args)
-  const onReset = (...args: any) => console.log('on reset', ...args)
+  const onToggle = (on: boolean) => console.log('on toggle', on)
+  const onReset = (on: boolean) => console.log('on reset', on)
 
   return (
-    <Toggle
-      initialOn={initialOn}
-      onToggle={onToggle}
-      onReset={onReset}
-      {...props}
-    >
-      {({ on, reset, getTogglerProps }) => ( // these props are passed as children
+    <Toggle initialOn={initialOn} onToggle={onToggle} onReset={onReset}>
+      {({ on, reset, getTogglerProps }) => (
         <>
-          <h1 className='text-2xl font-bold text-gray-700 mb-4'>State Initializers Pattern</h1>
-          <Switch {...getTogglerProps({ on })} />
+          <h1 className='text-2xl font-bold text-gray-700 mb-4'>
+            State Initializers Pattern
+          </h1>
+          {/* Pass on separately, and do not include it in getTogglerProps */}
+          <Switch on={on} {...getTogglerProps({})} />
           <button
             aria-label='custom-button'
             className='bg-gray-200 p-2 rounded hover:bg-gray-300 px-4 py-2 mt-4'
@@ -101,7 +117,9 @@ const StateInitializers = (props: any) => {
           >
             Reset toggle
           </button>
-          <p className='text-xs font-medium mt-4'>Check your console to see the extra data :) </p>
+          <p className='text-xs font-medium mt-4'>
+            Check your console to see the extra data :)
+          </p>
         </>
       )}
     </Toggle>

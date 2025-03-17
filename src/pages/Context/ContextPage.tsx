@@ -1,4 +1,11 @@
-import { useState, useContext, createContext } from 'react'
+/*
+ * The Context API is a React pattern that allows for global state management by providing an easy way to pass 
+ * data through the component tree without the need to manually pass props at every level.
+ * It enables components at any level to subscribe to shared data, making it ideal for managing global state like themes, 
+ * user authentication, or language preferences, while keeping code clean and avoiding "prop drilling."
+ */
+
+import { createContext, useContext, useState } from 'react'
 
 import { cn } from '../../utils/tw-merge'
 

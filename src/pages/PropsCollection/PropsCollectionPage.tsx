@@ -1,5 +1,14 @@
-// Props Collection Pattern
-// Reference: https://medium.com/@elhamelshami.dev/what-is-the-prop-getters-pattern-26349e5637df
+ /*
+ * Props Collection Pattern
+ * The Props Collection pattern is a React pattern that allows a component to collect and organize various
+ * props and pass them down to child components. This approach helps manage prop logic and grouping in a
+ * more organized manner. In this pattern, a parent component can collect necessary props, including those
+ * passed by the child, and then pass them down as a collection or an object, which can be spread to any child component.
+ * This pattern is useful for simplifying the management of multiple props, especially in components with complex 
+ * or reusable functionality.
+ * 
+ * Reference: https://medium.com/@elhamelshami.dev/what-is-the-prop-getters-pattern-26349e5637df
+ */
 
 import { ReactNode, useState } from 'react'
 import Switch from '../../components/Switch/Switch'
@@ -11,7 +20,7 @@ interface ToggleProps {
 const PROPS_COLLECTION_TITLE = 'Props Collection Pattern Example'
 
 const Toggle = ({ children }: ToggleProps) => {
-  const [ on, setOn ] = useState<boolean>(false)
+  const [on, setOn] = useState<boolean>(false)
   const toggle = () => setOn(!on)
 
   const getPropsCollection = () => {
@@ -28,10 +37,9 @@ const Toggle = ({ children }: ToggleProps) => {
   return children(getPropsCollection())
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const PropsCollection = (props: any) => {
+const PropsCollection = () => {
   return (
-    <Toggle {...props}>
+    <Toggle>
       {({ on, title, propsCollection }) => (
         <>
           <h1 className='text-2xl font-bold text-gray-700 mb-4'>{title}</h1>    
