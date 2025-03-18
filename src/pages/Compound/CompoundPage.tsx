@@ -9,19 +9,23 @@
  * Reference 2: https://frontendmastery.com/posts/advanced-react-component-composition-guide/
  */
 
-import React, { ReactNode, cloneElement, useState } from 'react'
-
+import React, { Children, FC, ReactNode, cloneElement, useState } from 'react'
 import { cn } from '../../utils/tw-merge'
 
+// Props for the Tabs component, which accepts children and an optional className.
 interface TabsProps {
   children: ReactNode
   className?: string
 }
 
+/**
+ * Tabs component serves as the parent for Tab items. It manages which tab is active
+ * and handles click events to switch between tabs.
+ */
 const Tabs = ({ children, className }: TabsProps) => {
   const [activeIndex, setActiveIndex] = useState(0)
 
-  return React.Children.toArray(children)
+  return Children.toArray(children)
     .filter(React.isValidElement)
     .map((child: React.ReactElement, index: number) => {
       return cloneElement(child, {
@@ -37,23 +41,35 @@ const Tabs = ({ children, className }: TabsProps) => {
     })
 }
 
+// Props for the individual Tab component
 interface TabProps {
   children: ReactNode
+  onClick?: () => void
+  className?: string
 }
 
-Tabs.Tab = ({ children, ...props}: TabProps) => {
+/**
+ * Tab component represents an individual tab. It is used inside the Tabs component.
+ * Receives className and onClick from Tabs when being cloned.
+ */
+Tabs.Tab = ({ children, ...props }: TabProps) => {
   return (
-    <div {...props}>
+    <div {...props} role="button" tabIndex={0}>
       {children}
-    </div>)
+    </div>
+  )
 }
 
-const ParentComponent = () => {
+/**
+ * ParentComponent demonstrates the use of the Tabs component.
+ * It renders a simple tab structure where clicking a tab changes its appearance.
+ */
+const ParentComponent: FC = () => {
   return (
     <>
-      <h1 className='text-xl font-bold text-gray-700 mb-4'>Compound.Component Pattern</h1>
-      <p className='text-md font-bold text-gray-700'>Click to select an item: </p>
-    
+      <h1 className="text-xl font-bold text-gray-700 mb-4">Compound Component Pattern</h1>
+      <p className="text-md font-bold text-gray-700">Click to select an item:</p>
+
       <Tabs>
         <Tabs.Tab>Item 1</Tabs.Tab>
         <Tabs.Tab>Item 2</Tabs.Tab>

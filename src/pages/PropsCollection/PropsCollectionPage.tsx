@@ -19,24 +19,39 @@ interface ToggleProps {
 
 const PROPS_COLLECTION_TITLE = 'Props Collection Pattern Example'
 
+/**
+ * Toggle component uses the props collection pattern to bundle and pass multiple props,
+ * including the current state and a set of handler functions, to its children. 
+ * This helps keep the child component API clean by grouping related props together in a single object.
+ */
 const Toggle = ({ children }: ToggleProps) => {
   const [on, setOn] = useState<boolean>(false)
   const toggle = () => setOn(!on)
 
+  /**
+   * getPropsCollection returns an object containing the necessary props (state, title, and handlers).
+   * This object is passed down to children, simplifying how props are applied to child components.
+   */
   const getPropsCollection = () => {
     return {
       on,
       title: PROPS_COLLECTION_TITLE,
       // specific props to switch component
       propsCollection: {
-        onClick: toggle,
+        onClick: toggle, // Handler to toggle the switch
       }
     }
   }
   
+  // The children function receives the props collection and other necessary props
   return children(getPropsCollection())
 }
 
+/**
+ * PropsCollection is the parent component that demonstrates the props collection pattern.
+ * It uses the Toggle component to pass down a collection of props (state, title, and handlers)
+ * to the Switch component, simplifying the child component's API.
+ */
 const PropsCollection = () => {
   return (
     <Toggle>

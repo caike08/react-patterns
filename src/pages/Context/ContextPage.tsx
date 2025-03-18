@@ -6,7 +6,6 @@
  */
 
 import { createContext, useContext, useState } from 'react'
-
 import { cn } from '../../utils/tw-merge'
 
 const enum THEME_COLOR {
@@ -14,18 +13,22 @@ const enum THEME_COLOR {
   DARK = 'dark'
 }
 
-// context type
+// Context type that holds the theme value and a function to change it.
 type ContextType = {
   theme: THEME_COLOR
   setTheme: (theme: THEME_COLOR) => void
 }
 
-// context with default values
+// ThemeContext provides the current theme and a way to update it.
 const ThemeContext = createContext<ContextType>({
   theme: THEME_COLOR.DARK,
   setTheme: () => {}
 })
 
+/**
+ * Comp1 component displays the current theme value.
+ * It subscribes to the ThemeContext to get the theme value.
+ */
 function Comp1() {
   // extract desired value
   const { theme } = useContext(ThemeContext)
@@ -39,6 +42,10 @@ function Comp1() {
   )
 }
 
+/**
+ * Comp2 component provides buttons to change the theme.
+ * It subscribes to the ThemeContext to get the setTheme function.
+ */
 function Comp2() {
   // extract desired value
   const { setTheme } = useContext(ThemeContext)
@@ -61,6 +68,10 @@ function Comp2() {
   )
 }
 
+/**
+ * Context component manages the theme state and provides it to its children
+ * via the ThemeContext.Provider. It renders the Comp1 and Comp2 components.
+ */
 export default function Context() {
   const [theme , setTheme ] = useState(THEME_COLOR.LIGHT)
 

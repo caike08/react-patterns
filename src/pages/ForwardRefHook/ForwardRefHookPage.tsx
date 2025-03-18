@@ -1,8 +1,15 @@
-/* eslint-disable react-refresh/only-export-components */
-// ForwardRef hook
-// Reference: https://javascript.plainenglish.io/using-forwardref-with-react-hooks-9d0d096ad810
+/* ForwardRef hook
+ *
+ * The ForwardRef Hook pattern in React allows you to pass a ref through a component to one of its children.
+ * This is particularly useful for accessing DOM nodes or child component instances from a parent component.
+ * In this implementation, the ModalComponent uses forwardRef to expose its root div, enabling the parent component
+ * (ForwardRefHookPage) to detect clicks outside the modal and close it. The pattern helps to maintain encapsulation
+ * while providing a way to access underlying DOM elements.
+ * 
+ * Reference: https://javascript.plainenglish.io/using-forwardref-with-react-hooks-9d0d096ad810
+ */
 
-import { forwardRef, useRef, useState, MouseEvent } from 'react'
+import { forwardRef, MouseEvent, useRef, useState } from 'react'
 
 interface ModalComponentPropType {
   title: string

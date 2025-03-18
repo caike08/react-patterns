@@ -18,6 +18,19 @@ interface ToggleProps {
   onToggle?: (on: boolean) => void
 }
 
+/**
+ * Toggles the current state of the component.
+ *
+ * If the component is controlled (i.e., the `on` prop is provided), it delegates
+ * the toggling action to the `onToggle` callback prop, passing the new state as
+ * an argument. Otherwise, it updates the internal state to reflect the toggled value.
+ *
+ * This function ensures that the component behaves correctly whether it is controlled
+ * or uncontrolled.
+ * 
+ * @param on The current state of the component.
+ * @param onToggle The callback to handle state updates.
+ */
 const Toggle: FC<ToggleProps> = (props) => {
   const [internalOn, setInternalOn] = useState<boolean>(false)
 
@@ -54,6 +67,9 @@ const Toggle: FC<ToggleProps> = (props) => {
   )
 }
 
+/**
+ * ControlledProps demonstrates the use of the controlled props pattern.
+ */
 const ControlledProps: FC = () => {
   const [bothOn, setBothOn] = useState<boolean>(false)
 

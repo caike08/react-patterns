@@ -9,7 +9,6 @@
  */
 
 import { FC, ReactNode, useState } from 'react'
-
 import Switch from '../../components/Switch/Switch'
 
 const PROPS_GETTER_TITLE = 'Prop Getter Pattern'
@@ -23,11 +22,19 @@ type ToggleProps = {
   children: (data: { on: boolean; title: string; propsGetter: PropsGetterFunction }) => ReactNode
 }
 
+/**
+ * Toggle component demonstrates the prop getter pattern, where it provides a propsGetter function 
+ * that enhances passed props by guaranteeing an onClick handler and optionally injecting additional behavior. 
+ * This pattern helps make components more flexible by allowing the parent to control how child props are handled.
+ */
 const Toggle = ({ children }: ToggleProps) => {
   const [on, setOn] = useState<boolean>(false)
   const toggle = () => setOn((prev) => !prev)
 
-  // propsGetter accepts an object with an optional onClick, returning the same object with an enhanced onClick.
+  /**
+   * propsGetter function enhances props passed to it by ensuring that onClick is defined. 
+   * It allows injecting custom logic (like the toggle function) while preserving any existing onClick behavior.
+   */
   const propsGetter: PropsGetterFunction = <T extends { onClick?: (...args: unknown[]) => void }>(
     { onClick, ...props }: T
   ): Omit<T, "onClick"> & { onClick: (...args: unknown[]) => void } => ({
@@ -39,6 +46,7 @@ const Toggle = ({ children }: ToggleProps) => {
     },
   })
 
+  // Bundles the current state, title, and propsGetter into a single object to pass to children
   const getPropsCollection = () => ({
     on,
     title: PROPS_GETTER_TITLE,
@@ -48,6 +56,12 @@ const Toggle = ({ children }: ToggleProps) => {
   return children(getPropsCollection())
 }
 
+/**
+ * PropsGetter is the parent component that demonstrates the prop getter pattern. 
+ * It uses the Toggle component to pass down the state and propsGetter function, which can 
+ * be used by child components (such as Switch and button) to enhance their behavior by injecting
+ * custom logic while maintaining flexibility.
+ */
 const PropsGetter: FC = () => {
   const customClick = () =>
     console.log('Hey, this arrow function was injected to be used in propsGetter')
@@ -59,8 +73,10 @@ const PropsGetter: FC = () => {
           <>
             <h1 className='text-2xl font-bold text-gray-700 mb-4'>{title}</h1>
 
+            {/* Using propsGetter to enhance Switch with onClick */}
             <Switch {...propsGetter({ on, onClick: () => {} })} />
 
+            {/* The button uses propsGetter, injecting a custom onClick and toggle logic */}
             <button
               aria-label='custom-button'
               className='bg-gray-200 p-2 rounded hover:bg-gray-300 px-4 py-2 mt-4'

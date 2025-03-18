@@ -51,12 +51,17 @@ const dispatch = (action: Action) => (state: CartState, props: Record<string, ne
   }
 }
 
-// in a functional component, we use useDispatch() hook to dispatch actions
+/**
+ * Cart component demonstrates the state reducer pattern by dispatching actions to a reducer function.
+ * The reducer calculates the new state based on the action type and returns the updated state.
+ * This pattern centralizes state updates and provides a consistent way to manage state transitions.
+ */
 class Cart extends Component<Record<string, never>, CartState> {
   state: CartState = {
     cartItems: 0,
   }
 
+  // Dispatches an action to add an item to the cart.
   addItemToCart = () => {
     this.setState(
       dispatch({
@@ -65,6 +70,7 @@ class Cart extends Component<Record<string, never>, CartState> {
     )
   }
 
+  // Dispatches an action to remove an item from the cart.
   removeItemFromCart = () => {
     this.setState(
       dispatch({
@@ -105,6 +111,10 @@ class Cart extends Component<Record<string, never>, CartState> {
   }
 }
 
+/**
+ * StateReducer component demonstrates the state reducer pattern.
+ * @returns StateReducer component that demonstrates the state reducer pattern.
+ */
 const StateReducer: FC = () => {
   return (
     <div className='flex gap-4 items-center justify-center flex-col'>

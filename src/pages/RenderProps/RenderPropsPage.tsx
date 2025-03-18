@@ -7,24 +7,33 @@
   * Reference 2: https://reactpatterns.com/
   */
 import { ReactNode, useState } from 'react'
-
 import Switch from '../../components/Switch/Switch'
 
 interface ToggleProps {
   children: ({ on, toggle }: { on: boolean, toggle: () => void }) => ReactNode
 }
 
+/**
+ * Toggle component uses the render props pattern to provide state (on/off) and a toggle function
+ * to its child components. The state is managed internally but passed down through a function
+ * that allows the children to control how the UI behaves based on the current state.
+ */
 const Toggle = ({ children }: ToggleProps) => {
-  const [ on, setOn ] = useState<boolean>(false)
+  const [on, setOn] = useState<boolean>(false)
   const toggle = () => setOn(!on)
 
-  // In a Class component, this would have been within render() method, thus the render props pattern.
+  // The children function is called with the current state and the toggle function
   return children({
     on,
     toggle,
   })
 }
 
+/**
+ * ToggleComponent serves as the parent that renders the Toggle component.
+ * It demonstrates the render props pattern by passing a function as a child to Toggle,
+ * which receives the state (on/off) and the toggle function to control the Switch component.
+ */
 const ToggleComponent = () => {
   return (
     <>
@@ -32,6 +41,7 @@ const ToggleComponent = () => {
       <Toggle>
         {({ on, toggle }) => (
           <>
+            {/* The Switch component receives the current state and toggle function */}
             <Switch on={on} onClick={toggle} />
           </>
         )}

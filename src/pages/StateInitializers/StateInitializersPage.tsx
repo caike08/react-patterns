@@ -1,5 +1,11 @@
-// State Initializer Pattern
-// Reference: https://kentcdodds.com/blog/the-state-initializer-pattern
+/* State Initializer Pattern
+ *
+ * The State Initializer pattern is a technique used to reset the state of a component to its initial value.
+ * This pattern is useful when you need to reset the state of a component to its initial value,
+ * such as when a user clicks a "reset" button or when a component is unmounted and remounted.
+ * 
+ * Reference: https://kentcdodds.com/blog/the-state-initializer-pattern
+ */
 import React, { Component, ReactNode } from 'react'
 import Switch from '../../components/Switch/Switch'
 
@@ -32,7 +38,10 @@ interface ToggleProps {
   children: (props: ToggleChildrenProps) => ReactNode
 }
 
-// Class component using the State Initializers pattern.
+/**
+ * The Toggle component manages the state of a toggle switch and provides helper functions to its children.
+ * It uses the state initializer pattern to reset the state to its initial value.
+ */
 class Toggle extends Component<ToggleProps, { on: boolean }> {
   // Default props.
   static defaultProps = {
@@ -91,11 +100,16 @@ class Toggle extends Component<ToggleProps, { on: boolean }> {
     }
   }
 
+  // Renders the children with the state and helper functions.
   render() {
     return this.props.children(this.getStateAndHelpers())
   }
 }
 
+/**
+ * StateInitializers demonstrates the use of the state initializer pattern.
+ * It renders a toggle switch that can be reset to its initial state.
+ */
 const StateInitializers: React.FC = () => {
   const initialOn = true
   const onToggle = (on: boolean) => console.log('on toggle', on)
